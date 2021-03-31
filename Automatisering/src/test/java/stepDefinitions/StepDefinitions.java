@@ -16,7 +16,7 @@ public class StepDefinitions {
 		driver.manage().window().maximize();
 		driver.get("https://login.mailchimp.com/signup/");
 	}
-
+// test
 	@Given("I have entered an {string} address")
 	public void i_have_entered_an_address(String email) {
 		// find element and sendKeys
