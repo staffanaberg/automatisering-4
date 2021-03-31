@@ -1,42 +1,28 @@
-#Author: your.email@your.domain.com
-#Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
+#Author: margret.magnusdottir@utb.ecutbildning.se
+
 @tag
 Feature: Register a new user
   In order to use the Mailchimp service I want to register a new user
 
   @tag1
-  Scenario: Title of your scenario
-    Given I want to write a step with precondition
-    And some other precondition
-    When I complete action
-    And some other action
-    And yet another action
-    Then I validate the outcomes
-    And check more outcomes
+  Scenario Outline: Register a new user
+    Given I have opened the website in my browser
+    * I have entered an "<email>" address
+    * I have also entered a "<user>" name 
+    * I have also entered a "<password>" 
+    When I press Sign up
+    Then There should be a "<message>" on screen
+    
+    
+    
+   Examples: 
+      |	email	|	username	| password	|  message    |
+      |	email	|		name		|	password	| check mail  |
+      |	email	|	sameName	|	password	|	user exists	|
+      |	email	|	longName	| password	|	longNameFail|
+      |	      |		name		|	password	|	noMailFail 	|
+      
+      
+      
+      
 
-  @tag2
-  Scenario Outline: Title of your scenario outline
-    Given I want to write a step with <name>
-    When I check for the <value> in step
-    Then I verify the <status> in step
-
-    Examples: 
-      | name  | value | status  |
-      | name1 |     5 | success |
-      | name2 |     7 | Fail    |
