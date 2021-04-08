@@ -8,19 +8,18 @@ Feature: Register a new user
   Scenario Outline: Register a new user
     Given I have opened the website in my browser
     * I have entered an "<email>" address
-    * I have also entered a "<user>" name 
-    * I have also entered a "<password>" 
+    * I have also entered a "<username>" 
+    * I have also entered a password 
     When I press Sign up
-    Then There should be a "<message>" on screen
+    Then There should be a "<result>" on screen
     
-    
-    
+     
    Examples: 
-      |	email	|	username	| password	|  message    |
-      |	email	|		name		|	password	| check mail  |
-      |	email	|	sameName	|	password	|	user exists	|
-      |	email	|	longName	| password	|	longNameFail|
-      |	      |		name		|	password	|	noMailFail 	|
+      |	email		|	username	 |  result    																																						|
+      |	email		|	randomName |	Check your email  																																		|
+      |	email		|	commonName |	Another user with this username already exists. Maybe it's your evil twin. Spooky.		|
+      |	email		|	longName	 |	Enter a value less than 100 characters long																						|
+      |	noEmail |	randomName |	Please enter a value 																																	|
       
       
       
